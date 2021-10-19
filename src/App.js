@@ -1,23 +1,39 @@
-import logo from './logo.svg';
 import './App.css';
+import {
+    LineChart,
+    Line,
+    CartesianGrid,
+    XAxis,
+    YAxis,
+    Tooltip,
+} from 'recharts';
 
 function App() {
+    const data = [
+        { name: 'точка А', uv: 5000, pv: 1400},
+        { name: 'точка Б', uv: 1000, pv: 1398},
+        { name: 'точка В', uv: 2000, pv: 9800},
+        { name: 'точка Г', uv: 2780, pv: 3908},
+        { name: 'точка Д', uv: 9890, pv: 4800},
+        { name: 'точка Е', uv: 2390, pv: 3800},
+        { name: 'точка Ё', uv: 3490, pv: 4300},
+    ];
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+        <LineChart
+            width={1000}
+            height={600}
+            data={data}
+
         >
-          Learn React
-        </a>
-      </header>
+            <Line type="monotone" dataKey="uv" stroke="#8884d8" />
+            <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+        </LineChart>
+
     </div>
   );
 }
